@@ -33,7 +33,7 @@ class ProgramaPrincipal:
                 precio = float(input("Por favor ingrese el nuevo precio: "))
                 monopatin.modificar_monopatin(self, marca, precio)
             if nro == 3:
-                id = input("Por favor ingrese el id: ")
+                id = input("Por favor ingrese el id del monopatin: ")
                 monopatin.borrar_monopatin(self, id)
             if nro == 4:
                 marca = str(input("por favor ingrese la marca para cargar el stock: "))
