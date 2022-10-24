@@ -33,8 +33,8 @@ class ProgramaPrincipal:
                 precio = float(input("Por favor ingrese el nuevo precio: "))
                 monopatin.modificar_monopatin(self, marca, precio)
             if nro == 3:
-                marca = input("Por favor ingrese la marca del Monopatin: ")
-                monopatin.borrar_monopatin(self, marca)
+                id = input("Por favor ingrese el id: ")
+                monopatin.borrar_monopatin(self, id)
             if nro == 4:
                 marca = str(input("por favor ingrese la marca para cargar el stock: "))
                 monopatin.cargar_stock(self, marca)    
@@ -127,10 +127,10 @@ class monopatin:
         finally:
             conexion.cerrarConexion()  
 
-    def borrar_monopatin(self, marca):
+    def borrar_monopatin(self,id):
         conexion=Conexiones()
         conexion.abrirConexion()
-        conexion.miCursor.execute("DELETE FROM MONOPATIN where marca= '{}' ".format(marca))
+        conexion.miCursor.execute("DELETE FROM MONOPATIN where _id= '{}' ".format(id))
         conexion.miConexion.commit()
 
     def mostrar(self):
