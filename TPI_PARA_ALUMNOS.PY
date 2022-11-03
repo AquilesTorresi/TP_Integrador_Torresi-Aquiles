@@ -29,7 +29,7 @@ class ProgramaPrincipal:
                 nuevo_monopatin = monopatin(modelo,marca,potencia,precio,color,cantidadDisponibles,fechaUltimoPrecio)
                 nuevo_monopatin.cargar_monopatin()
             if nro == 2:
-                marca = input("Por favor ingrese el nombre de la marca: ")
+                marca = input("Por favor ingrese el id del modelo: ")
                 precio = float(input("Por favor ingrese el nuevo precio: "))
                 monopatin.modificar_monopatin(self, marca, precio)
             if nro == 3:
@@ -115,11 +115,11 @@ class monopatin:
         finally:
             conexion.cerrarConexion()
 
-    def modificar_monopatin(self, marca, precio):
+    def modificar_monopatin(self, id, precio):
         conexion = Conexiones()
         conexion.abrirConexion()
         try:
-            conexion.miCursor.execute("UPDATE MONOPATIN SET precio='{}' where marca='{}'".format(precio, marca))
+            conexion.miCursor.execute("UPDATE MONOPATIN SET precio='{}' where _id='{}'".format(precio, id))
             conexion.miConexion.commit()
             print("Monopatin modificado correctamente")
         except:
