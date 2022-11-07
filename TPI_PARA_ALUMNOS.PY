@@ -29,15 +29,15 @@ class ProgramaPrincipal:
                 nuevo_monopatin = monopatin(modelo,marca,potencia,precio,color,cantidadDisponibles,fechaUltimoPrecio)
                 nuevo_monopatin.cargar_monopatin()
             if nro == 2:
-                marca = input("Por favor ingrese el id del modelo: ")
+                id = input("Por favor ingrese el id del modelo: ")
                 precio = float(input("Por favor ingrese el nuevo precio: "))
-                monopatin.modificar_monopatin(self, marca, precio)
+                monopatin.modificar_monopatin(self, id, precio)
             if nro == 3:
                 id = input("Por favor ingrese el id del monopatin: ")
                 monopatin.borrar_monopatin(self, id)
             if nro == 4:
-                marca = str(input("por favor ingrese la marca para cargar el stock: "))
-                monopatin.cargar_stock(self, marca)    
+                id = str(input("por favor ingrese el id para cargar el stock: "))
+                monopatin.cargar_stock(self, id)    
             if nro == 5:
                 monopatin.mostrar(self)
             if nro == 6:
@@ -141,10 +141,10 @@ class monopatin:
         for i in datos:
             print(i)
 
-    def cargar_stock(self, marca):
+    def cargar_stock(self, id):
         conexion=Conexiones()
         conexion.abrirConexion()
-        conexion.miCursor.execute("UPDATE MONOPATIN SET cantidadDisponibles=cantidadDisponibles+1 where marca='{}'".format(marca))
+        conexion.miCursor.execute("UPDATE MONOPATIN SET cantidadDisponibles=cantidadDisponibles+1 where _id='{}'".format(id))
         conexion.miConexion.commit()
 
 class Conexiones:
